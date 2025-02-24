@@ -22,13 +22,18 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendMessage", ({ chatId, message }) => {
-    console.log(`Message received in chat ${chatId}: ${message}`);
+    console.log(`Message received in chat ${chatId}`);
     io.to(chatId).emit("receiveMessage", message);
   });
 
-  socket.on("leaveChat", (chatId) => {
-    socket.leave(chatId);
-    console.log(`User ${socket.id} left chat ${chatId}\n`);
+  socket.on("connectUser", (userId) => {
+    console.log(`User with socketId ${socket.id} connected userId ${userId}`);
+    socket.join(userId);
+  });
+
+  socket.on("addChat", ({ userId, chat }) => {
+    console.log(`Chat request to user ${userId}`);
+    io.to(userId).emit("receiveChatRequest", chat);
   });
 
   socket.on("disconnect", () => {
