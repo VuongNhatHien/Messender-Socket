@@ -1,0 +1,20 @@
+{
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "git",
+          "commands": []
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "run",
+          "commands": ["node src/index.js"]
+        }
+      ]
+    }
+  ]
+}
