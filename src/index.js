@@ -26,8 +26,8 @@ io.on("connection", (socket) => {
     io.to(chatId).emit("receiveMessage", message);
   });
 
-  socket.on("connectUser", (userId) => {
-    console.log(`User with socketId ${socket.id} connected userId ${userId}`);
+  socket.on("listenChatRequest", (userId) => {
+    console.log(`User with id ${userId} is listening for chat requests`);
     socket.join(userId);
   });
 
