@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", ({ chatId, message }) => {
     console.log(`Message received in chat ${chatId}`);
-    io.to(chatId).emit("receiveMessage", message);
+    socket.broadcast.to(chatId).emit("receiveMessage", message);
   });
 
   socket.on("listenChatRequest", (userId) => {
@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
 
   socket.on("addChat", ({ userId, chat }) => {
     console.log(`Chat request to user ${userId}`);
-    io.to(userId).emit("receiveChatRequest", chat);
+    socket.broadcast.to(userId).emit("receiveChatRequest", chat);
   });
 
   socket.on("disconnect", () => {
