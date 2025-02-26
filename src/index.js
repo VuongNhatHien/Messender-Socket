@@ -21,9 +21,9 @@ io.on("connection", (socket) => {
     console.log(`User ${socket.id} joined chat ${chatId}`);
   });
 
-  socket.on("sendMessage", ({ chatId, message }) => {
+  socket.on("sendMessage", (chatId) => {
     console.log(`Message received in chat ${chatId}`);
-    socket.broadcast.to(chatId).emit("receiveMessage", message);
+    socket.broadcast.to(chatId).emit("receiveMessage");
   });
 
   socket.on("listenChatRequest", (userId) => {
@@ -31,9 +31,9 @@ io.on("connection", (socket) => {
     socket.join(userId);
   });
 
-  socket.on("addChat", ({ userId, chat }) => {
+  socket.on("addChat", (userId) => {
     console.log(`Chat request to user ${userId}`);
-    socket.broadcast.to(userId).emit("receiveChatRequest", chat);
+    socket.broadcast.to(userId).emit("receiveChatRequest");
   });
 
   socket.on("disconnect", () => {
