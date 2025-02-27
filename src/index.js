@@ -21,9 +21,9 @@ io.on("connection", (socket) => {
     console.log(`User ${socket.id} joined chat ${chatId}`);
   });
 
-  socket.on("sendMessage", (chatId) => {
+  socket.on("sendMessage", ({ chatId, message }) => {
     console.log(`Message received in chat ${chatId}`);
-    socket.broadcast.to(chatId).emit("receiveMessage");
+    socket.broadcast.to(chatId).emit("receiveMessage", message);
   });
 
   socket.on("listenChatRequest", (userId) => {
