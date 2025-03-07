@@ -1,4 +1,3 @@
-## Frontend repository: [Frontend](https://github.com/VuongNhatHien/Messender-NextJS)
 ## Getting Started
 1. Install packages
 ```bash
