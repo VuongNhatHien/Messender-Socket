@@ -7,10 +7,11 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "http://192.168.1.4:3000", "http://www.nhathien.online"],
+    origin: ["http://localhost:3000", "http://192.168.1.4:3000", "http://www.nhathien.online", "https://www.nhathien.online"],
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"],
     credentials: true,
   },
+ path: "/socket.io/"
 });
 
 io.on("connection", (socket) => {
